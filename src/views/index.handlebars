@@ -1,0 +1,46 @@
+{{#if isValid}}
+  {{#if first_name}}
+    <div>
+      <p>¡Bienvenido/a {{first_name}}!</p>
+    </div>
+    <div>
+    <a href="http://localhost:8080/logout">
+        <button>Cerrar sesion</button>
+    </a>
+</div>
+  {{/if}}
+  <div>
+    {{#each docs}}
+    <div class="card m-10">
+        <div class="card-header">
+          {{this.title}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{this.description}}</p>
+          <p class="card-text">{{this.price}}</p>
+          <p class="card-text">{{this.category}}</p>
+          <p class="card-text">{{this.stock}}</p>
+          <p class="card-text">{{this.code}}</p>
+          <p class="card-text">{{this.id}}</p>
+        </div>
+    </div>  
+    {{/each}}
+  </div>
+  <br>
+  <div class="mt-2">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {{#if hasPrevPage}}
+        <li class="page-item"><a class="page-link" href={{this.prevLink}}>Anterior</a></li>
+        {{/if}}
+        <li class="page-item"><a class="page-link" href="#">{{this.page}}</a></li>
+        {{#if hasNextPage}}
+        <li class="page-item"><a class="page-link" href={{this.nextLink}}>Siguiente</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+    
+  </div>
+{{else}}
+<h1>No hay productos para mostrar</h1>
+{{/if}}
